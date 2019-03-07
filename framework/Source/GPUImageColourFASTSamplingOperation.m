@@ -167,8 +167,8 @@ NSString *const kGPUImageColourFASTSamplingFragmentShaderString = SHADER_STRING
         _texelHeight = 1.0 / filterFrameSize.height;
         
         runSynchronouslyOnVideoProcessingQueue(^{
-            [GPUImageContext setActiveShaderProgram:filterProgram];
-            if (GPUImageRotationSwapsWidthAndHeight(inputRotation))
+            [GPUImageContext setActiveShaderProgram:self->filterProgram];
+            if (GPUImageRotationSwapsWidthAndHeight(self->inputRotation))
             {
                 glUniform1f(texelWidthUniform, _texelHeight);
                 glUniform1f(texelHeightUniform, _texelWidth);
