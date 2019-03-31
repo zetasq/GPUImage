@@ -25,6 +25,7 @@
 }
 
 @property (assign, nonatomic) NSUInteger aspectRatio;
+@property (assign, nonatomic) CGRect cachedBounds;
 
 // Initialization and teardown
 - (void)commonInit;
@@ -84,7 +85,7 @@
     {
         self.contentScaleFactor = [[UIScreen mainScreen] scale];
     }
-
+    self.cachedBounds = self.bounds;
     inputRotation = kGPUImageNoRotation;
     self.opaque = YES;
     self.hidden = NO;
@@ -132,7 +133,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+    self.cachedBounds = self.bounds;
     // The frame buffer needs to be trashed and re-created when the view size changes.
     if (!CGSizeEqualToSize(self.bounds.size, boundsSizeAtFrameBufferEpoch) &&
         !CGSizeEqualToSize(self.bounds.size, CGSizeZero)) {
@@ -235,7 +236,7 @@
     runSynchronouslyOnVideoProcessingQueue(^{
         CGFloat heightScaling, widthScaling;
         
-        CGSize currentViewSize = self.bounds.size;
+        CGSize currentViewSize = self.cachedBounds.size;
         
         //    CGFloat imageAspectRatio = inputImageSize.width / inputImageSize.height;
         //    CGFloat viewAspectRatio = currentViewSize.width / currentViewSize.height;
