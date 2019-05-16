@@ -101,7 +101,7 @@
         runSynchronouslyOnVideoProcessingQueue(^{
             [GPUImageContext useImageProcessingContext];
 
-            _preferredConversion = kColorConversion601;
+            _preferredConversion = kColorConversion601FullRange;
             isFullYUVRange       = YES;
             yuvConversionProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageVertexShaderString fragmentShaderString:kGPUImageYUVFullRangeConversionForLAFragmentShaderString];
 
