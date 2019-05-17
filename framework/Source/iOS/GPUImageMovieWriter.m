@@ -216,17 +216,17 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
     }
     
     NSMutableDictionary *outputDict = [outputSettings mutableCopy];
-    NSDictionary *videoCleanApertureSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                [NSNumber numberWithInt:videoSize.width], AVVideoCleanApertureWidthKey,
-                                                [NSNumber numberWithInt:videoSize.height], AVVideoCleanApertureHeightKey,
-                                                [NSNumber numberWithInt:0], AVVideoCleanApertureHorizontalOffsetKey,
-                                                [NSNumber numberWithInt:0], AVVideoCleanApertureVerticalOffsetKey,
-                                                nil];
+    // NSDictionary *videoCleanApertureSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+    //                                             [NSNumber numberWithInt:videoSize.width], AVVideoCleanApertureWidthKey,
+    //                                             [NSNumber numberWithInt:videoSize.height], AVVideoCleanApertureHeightKey,
+    //                                             [NSNumber numberWithInt:0], AVVideoCleanApertureHorizontalOffsetKey,
+    //                                             [NSNumber numberWithInt:0], AVVideoCleanApertureVerticalOffsetKey,
+    //                                             nil];
 
-    NSDictionary *videoAspectRatioSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                              [NSNumber numberWithInt:3], AVVideoPixelAspectRatioHorizontalSpacingKey,
-                                              [NSNumber numberWithInt:3], AVVideoPixelAspectRatioVerticalSpacingKey,
-                                              nil];
+    // NSDictionary *videoAspectRatioSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+    //                                           [NSNumber numberWithInt:3], AVVideoPixelAspectRatioHorizontalSpacingKey,
+    //                                           [NSNumber numberWithInt:3], AVVideoPixelAspectRatioVerticalSpacingKey,
+    //                                           nil];
 
     NSMutableDictionary * compressionProperties = [[NSMutableDictionary alloc] init];
     // [compressionProperties setObject:videoCleanApertureSettings forKey:AVVideoCleanApertureKey];
