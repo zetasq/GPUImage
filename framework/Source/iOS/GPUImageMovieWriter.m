@@ -763,12 +763,12 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
         
         CVPixelBufferRef pixel_buffer = NULL;
         
-        if ([GPUImageContext supportsFastTextureUpload])
-        {
-            pixel_buffer = renderTarget;
-            CVPixelBufferLockBaseAddress(pixel_buffer, 0);
-        }
-        else
+        // if ([GPUImageContext supportsFastTextureUpload])
+        // {
+        //     pixel_buffer = renderTarget;
+        //     CVPixelBufferLockBaseAddress(pixel_buffer, 0);
+        // }
+        // else
         {
             CVReturn status = CVPixelBufferPoolCreatePixelBuffer (NULL, [assetWriterPixelBufferInput pixelBufferPool], &pixel_buffer);
             if ((pixel_buffer == NULL) || (status != kCVReturnSuccess))
@@ -781,7 +781,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
                 CVPixelBufferLockBaseAddress(pixel_buffer, 0);
                 
                 GLubyte *pixelBufferData = (GLubyte *)CVPixelBufferGetBaseAddress(pixel_buffer);
-                glReadPixels(0, 0, videoSize.width, videoSize.height, GL_RGBA, GL_UNSIGNED_BYTE, pixelBufferData);
+                glReadPixels(0, 0, videoSize.width, videoSize.height, GL_BGRA, GL_UNSIGNED_BYTE, pixelBufferData);
             }
         }
         
@@ -809,10 +809,10 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
             
             previousFrameTime = frameTime;
             
-            if (![GPUImageContext supportsFastTextureUpload])
-            {
+            // if (![GPUImageContext supportsFastTextureUpload])
+            // {
                 CVPixelBufferRelease(pixel_buffer);
-            }
+            // }
         };
         
         write();
