@@ -541,7 +541,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
         {
             if (isFullYUVRange)
             {
-                _preferredConversion = kColorConversion601FullRange;
+                _preferredConversion = kColorConversion709FullRange;
             }
             else
             {
@@ -557,7 +557,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     {
         if (isFullYUVRange)
         {
-            _preferredConversion = kColorConversion601FullRange;
+            _preferredConversion = kColorConversion709FullRange;
         }
         else
         {
