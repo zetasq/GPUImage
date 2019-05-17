@@ -541,15 +541,18 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
         {
             if (isFullYUVRange)
             {
+                NSLog(@"Convertion: 709 fullrange");
                 _preferredConversion = kColorConversion709FullRange;
             }
             else
             {
+                NSLog(@"Convertion: 601");
                 _preferredConversion = kColorConversion601;
             }
         }
         else
         {
+            NSLog(@"Convertion: 709");
             _preferredConversion = kColorConversion709;
         }
     }
@@ -557,10 +560,12 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     {
         if (isFullYUVRange)
         {
+            NSLog(@"Convertion: 709 fullrange");
             _preferredConversion = kColorConversion709FullRange;
         }
         else
         {
+            NSLog(@"Convertion: 601");
             _preferredConversion = kColorConversion601;
         }
 
