@@ -264,7 +264,7 @@ static void *openGLESContextQueueKey;
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wtautological-pointer-compare"
-    return (CVOpenGLESTextureCacheCreate != NULL);
+    return NO;//(CVOpenGLESTextureCacheCreate != NULL);
 #pragma clang diagnostic pop
 
 #endif
