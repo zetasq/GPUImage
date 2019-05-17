@@ -553,7 +553,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
         else
         {
             NSLog(@"Convertion: 709");
-            _preferredConversion = kColorConversion709;
+            _preferredConversion = kColorConversion709FullRange;
         }
     }
     else
