@@ -215,7 +215,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
         }
     }
     
-    /*
+
     NSDictionary *videoCleanApertureSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                                 [NSNumber numberWithInt:videoSize.width], AVVideoCleanApertureWidthKey,
                                                 [NSNumber numberWithInt:videoSize.height], AVVideoCleanApertureHeightKey,
@@ -233,10 +233,9 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
     [compressionProperties setObject:videoAspectRatioSettings forKey:AVVideoPixelAspectRatioKey];
     [compressionProperties setObject:[NSNumber numberWithInt: 2000000] forKey:AVVideoAverageBitRateKey];
     [compressionProperties setObject:[NSNumber numberWithInt: 16] forKey:AVVideoMaxKeyFrameIntervalKey];
-    [compressionProperties setObject:AVVideoProfileLevelH264Main31 forKey:AVVideoProfileLevelKey];
+    [compressionProperties setObject:AVVideoProfileLevelH264High41 forKey:AVVideoProfileLevelKey];
     
     [outputSettings setObject:compressionProperties forKey:AVVideoCompressionPropertiesKey];
-    */
      
     assetWriterVideoInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:outputSettings];
     assetWriterVideoInput.expectsMediaDataInRealTime = _encodingLiveVideo;
