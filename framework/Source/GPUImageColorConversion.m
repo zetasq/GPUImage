@@ -23,10 +23,16 @@ GLfloat kColorConversion709Default[] = {
     1.793, -0.533,   0.0,
 };
 
+GLfloat kMEColorConversion709FullRangeDefault[] = {
+    1.0,    1.0,   1.0,
+    0.0,   -0.187, 1.856,
+    1.575, -0.468, 0.0,
+};
 
 GLfloat *kColorConversion601 = kColorConversion601Default;
 GLfloat *kColorConversion601FullRange = kColorConversion601FullRangeDefault;
 GLfloat *kColorConversion709 = kColorConversion709Default;
+GLfloat *kMEColorConversion709FullRange = kMEColorConversion709FullRangeDefault;
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 NSString *const kGPUImageYUVVideoRangeConversionForRGFragmentShaderString = SHADER_STRING
