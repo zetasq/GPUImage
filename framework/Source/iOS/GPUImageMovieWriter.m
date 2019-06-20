@@ -781,7 +781,8 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
                 CVPixelBufferLockBaseAddress(pixel_buffer, 0);
                 
                 GLubyte *pixelBufferData = (GLubyte *)CVPixelBufferGetBaseAddress(pixel_buffer);
-                glReadPixels(0, 0, videoSize.width, videoSize.height, GL_BGRA, GL_UNSIGNED_BYTE, pixelBufferData);
+                int stride = (int)CVPixelBufferGetBytesPerRow(pixel_buffer);
+                glReadPixels(0, 0, stride / 4, videoSize.height, GL_BGRA, GL_UNSIGNED_BYTE, pixelBufferData);
             }
         }
         
