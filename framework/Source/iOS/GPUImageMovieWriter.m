@@ -652,6 +652,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
 {
     if (!movieFramebuffer)
     {
+        [self destroyDataFBO];
         [self createDataFBO];
     }
     
