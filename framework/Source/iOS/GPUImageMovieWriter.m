@@ -641,7 +641,9 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
             {
                 CVPixelBufferRelease(renderTarget);
             }
-            
+            if (assetWriterPixelBufferInput) {
+                CVPixelBufferPoolFlush([assetWriterPixelBufferInput pixelBufferPool], 0);
+            }
         }
     });
 }
