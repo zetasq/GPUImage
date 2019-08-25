@@ -479,7 +479,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
             }
             CFRelease(audioBuffer);
         };
-        runAsynchronouslyOnContextQueue(_movieWriterContext, write);
+
         if( _encodingLiveVideo )
 
         {
