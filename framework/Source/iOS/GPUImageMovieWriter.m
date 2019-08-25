@@ -567,40 +567,40 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
     glGenFramebuffers(1, &movieFramebuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, movieFramebuffer);
     
-    if ([GPUImageContext supportsFastTextureUpload])
-    {
-        // Code originally sourced from http://allmybrain.com/2011/12/08/rendering-to-a-texture-with-ios-5-texture-cache-api/
-        
-
-        CVPixelBufferPoolCreatePixelBuffer (NULL, [assetWriterPixelBufferInput pixelBufferPool], &renderTarget);
-
-        /* AVAssetWriter will use BT.601 conversion matrix for RGB to YCbCr conversion
-         * regardless of the kCVImageBufferYCbCrMatrixKey value.
-         * Tagging the resulting video file as BT.601, is the best option right now.
-         * Creating a proper BT.709 video is not possible at the moment.
-         */
-        CVBufferSetAttachment(renderTarget, kCVImageBufferColorPrimariesKey, kCVImageBufferColorPrimaries_ITU_R_709_2, kCVAttachmentMode_ShouldPropagate);
-        CVBufferSetAttachment(renderTarget, kCVImageBufferYCbCrMatrixKey, kCVImageBufferYCbCrMatrix_ITU_R_601_4, kCVAttachmentMode_ShouldPropagate);
-        CVBufferSetAttachment(renderTarget, kCVImageBufferTransferFunctionKey, kCVImageBufferTransferFunction_ITU_R_709_2, kCVAttachmentMode_ShouldPropagate);
-        
-        CVOpenGLESTextureCacheCreateTextureFromImage (kCFAllocatorDefault, [_movieWriterContext coreVideoTextureCache], renderTarget,
-                                                      NULL, // texture attributes
-                                                      GL_TEXTURE_2D,
-                                                      GL_RGBA, // opengl format
-                                                      (int)videoSize.width,
-                                                      (int)videoSize.height,
-                                                      GL_BGRA, // native iOS format
-                                                      GL_UNSIGNED_BYTE,
-                                                      0,
-                                                      &renderTexture);
-        
-        glBindTexture(CVOpenGLESTextureGetTarget(renderTexture), CVOpenGLESTextureGetName(renderTexture));
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, CVOpenGLESTextureGetName(renderTexture), 0);
-    }
-    else
+//    if ([GPUImageContext supportsFastTextureUpload])
+//    {
+//        // Code originally sourced from http://allmybrain.com/2011/12/08/rendering-to-a-texture-with-ios-5-texture-cache-api/
+//
+//
+//        CVPixelBufferPoolCreatePixelBuffer (NULL, [assetWriterPixelBufferInput pixelBufferPool], &renderTarget);
+//
+//        /* AVAssetWriter will use BT.601 conversion matrix for RGB to YCbCr conversion
+//         * regardless of the kCVImageBufferYCbCrMatrixKey value.
+//         * Tagging the resulting video file as BT.601, is the best option right now.
+//         * Creating a proper BT.709 video is not possible at the moment.
+//         */
+//        CVBufferSetAttachment(renderTarget, kCVImageBufferColorPrimariesKey, kCVImageBufferColorPrimaries_ITU_R_709_2, kCVAttachmentMode_ShouldPropagate);
+//        CVBufferSetAttachment(renderTarget, kCVImageBufferYCbCrMatrixKey, kCVImageBufferYCbCrMatrix_ITU_R_601_4, kCVAttachmentMode_ShouldPropagate);
+//        CVBufferSetAttachment(renderTarget, kCVImageBufferTransferFunctionKey, kCVImageBufferTransferFunction_ITU_R_709_2, kCVAttachmentMode_ShouldPropagate);
+//
+//        CVOpenGLESTextureCacheCreateTextureFromImage (kCFAllocatorDefault, [_movieWriterContext coreVideoTextureCache], renderTarget,
+//                                                      NULL, // texture attributes
+//                                                      GL_TEXTURE_2D,
+//                                                      GL_RGBA, // opengl format
+//                                                      (int)videoSize.width,
+//                                                      (int)videoSize.height,
+//                                                      GL_BGRA, // native iOS format
+//                                                      GL_UNSIGNED_BYTE,
+//                                                      0,
+//                                                      &renderTexture);
+//
+//        glBindTexture(CVOpenGLESTextureGetTarget(renderTexture), CVOpenGLESTextureGetName(renderTexture));
+//        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+//        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+//
+//        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, CVOpenGLESTextureGetName(renderTexture), 0);
+//    }
+//    else
     {
         glGenRenderbuffers(1, &movieRenderbuffer);
         glBindRenderbuffer(GL_RENDERBUFFER, movieRenderbuffer);
@@ -640,9 +640,6 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
             if (renderTarget)
             {
                 CVPixelBufferRelease(renderTarget);
-            }
-            if (assetWriterPixelBufferInput) {
-                CVPixelBufferPoolFlush([assetWriterPixelBufferInput pixelBufferPool], 0);
             }
         }
     });
