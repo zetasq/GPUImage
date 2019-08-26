@@ -599,7 +599,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, CVOpenGLESTextureGetName(renderTexture), 0);
-        NSLog(@"GPUImage createDataFBO %p %p", renderTarget, renderTexture);
+        NSLog(@"GPUImage createDataFBO %p %p %p", renderTarget, renderTexture, self);
     }
     else
     {
@@ -634,7 +634,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
         
         if ([GPUImageContext supportsFastTextureUpload])
         {
-            NSLog(@"GPUImage destroyDataFBO 1 %p %p", renderTarget, renderTexture);
+            NSLog(@"GPUImage destroyDataFBO 1 %p %p %p", renderTarget, renderTexture, self);
             if (renderTexture)
             {
                 CFRelease(renderTexture);
@@ -643,7 +643,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
             {
                 CVPixelBufferRelease(renderTarget);
             }
-            NSLog(@"GPUImage destroyDataFBO 2 %p %p", renderTarget, renderTexture);
+            NSLog(@"GPUImage destroyDataFBO 2 %p %p %p", renderTarget, renderTexture, self);
         }
     });
 }

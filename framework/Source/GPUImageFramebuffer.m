@@ -180,6 +180,7 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size);
             glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, _textureOptions.wrapT);
             
             glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, CVOpenGLESTextureGetName(renderTexture), 0);
+            NSLog(@"GPUImage generateFramebuffer %p %p %p", renderTarget, renderTexture, self);
 #endif
         }
         else
@@ -227,6 +228,7 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size);
                 CFRelease(renderTexture);
                 renderTexture = NULL;
             }
+            NSLog(@"GPUImage destroyFramebuffer %p %p %p", renderTarget, renderTexture, self);
 #endif
         }
         else
