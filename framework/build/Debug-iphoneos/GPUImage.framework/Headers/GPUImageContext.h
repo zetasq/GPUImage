@@ -28,6 +28,7 @@ typedef NS_ENUM(NSUInteger, GPUImageRotationMode) {
 + (dispatch_queue_t)sharedContextQueue;
 + (GPUImageFramebufferCache *)sharedFramebufferCache;
 + (void)useImageProcessingContext;
+- (void)clearShaderCache;
 - (void)useAsCurrentContext;
 + (void)setActiveShaderProgram:(GLProgram *)shaderProgram;
 - (void)setContextShaderProgram:(GLProgram *)shaderProgram;
