@@ -92,8 +92,7 @@ static void *openGLESContextQueueKey;
 
 - (void)clearShaderCache
 {
-    [shaderProgramCache removeAllObjects];
-        
+    [shaderProgramCache removeAllObjects];   
 }
 
 - (void)setContextShaderProgram:(GLProgram *)shaderProgram;

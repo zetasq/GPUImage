@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, GPUImageRotationMode) {
 + (GPUImageFramebufferCache *)sharedFramebufferCache;
 + (void)useImageProcessingContext;
 - (void)useAsCurrentContext;
+- (void)clearShaderCache;
 + (void)setActiveShaderProgram:(GLProgram *)shaderProgram;
 - (void)setContextShaderProgram:(GLProgram *)shaderProgram;
 + (GLint)maximumTextureSizeForThisDevice;
