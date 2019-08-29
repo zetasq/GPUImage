@@ -90,6 +90,12 @@ static void *openGLESContextQueueKey;
     [sharedContext setContextShaderProgram:shaderProgram];
 }
 
+- (void)clearShaderCache
+{
+    [shaderProgramCache removeAllObjects];
+        
+}
+
 - (void)setContextShaderProgram:(GLProgram *)shaderProgram;
 {
     EAGLContext *imageProcessingContext = [self context];
